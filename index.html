@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>מירב נבו | מאמנת NLP מוסמכת</title>
+<meta name="description" content="ליווי NLP ממוקד, מבוסס דרך וניסיון חיים. מפגשים בזום מנוחות הבית. מירב נבו – מאמנת NLP מוסמכת.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;700&family=Frank+Ruhl+Libre:wght@500;700;900&family=Varela+Round&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --cream:#faf6ef;
+    --sand:#f1e8d9;
+    --sage:#7f9160;
+    --sage-deep:#5f7045;
+    --sage-light:#e1e8d2;
+    --clay:#a35d3d;
+    --clay-dark:#7d4529;
+    --rose:#e8c4b8;
+    --rose-light:#f6e4dc;
+    --gold:#e3c27e;
+    --sky:#cfdfdc;
+    --text:#4a4038;
+    --muted:#7b7065;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{font-family:'Heebo',sans-serif;background:var(--cream);color:var(--text);line-height:1.8;font-size:18px;overflow-x:hidden}
+  a{color:inherit}
+  .wrap{max-width:1000px;margin:0 auto;padding:0 24px;position:relative}
+
+  /* painting – fixed on the left */
+  body::before{content:"";position:fixed;top:0;bottom:0;left:0;width:min(44vw,540px);z-index:-2;
+    background:url('hero.jpg') left center/cover no-repeat;
+    -webkit-mask-image:linear-gradient(to left,transparent 0%,#000 40%);
+            mask-image:linear-gradient(to left,transparent 0%,#000 40%)}
+
+  /* scroll progress */
+  #progress{position:fixed;top:0;right:0;height:4px;width:0;background:linear-gradient(to left,var(--sage),var(--gold),var(--rose));z-index:50;border-radius:0 0 0 4px}
+
+  /* nav */
+  nav{position:fixed;top:14px;left:50%;transform:translateX(-50%);width:min(940px,calc(100% - 28px));
+      background:rgba(250,246,239,.8);backdrop-filter:blur(10px);border:1px solid rgba(163,93,61,.12);
+      border-radius:60px;z-index:40;box-shadow:0 8px 30px rgba(74,64,56,.07);transition:.3s}
+  nav .in{display:flex;justify-content:space-between;align-items:center;height:58px;padding:0 26px}
+  .brand{font-family:'Frank Ruhl Libre',serif;font-weight:700;color:var(--clay);font-size:1.2rem;text-decoration:none;display:flex;align-items:center;gap:8px}
+  .brand i{width:12px;height:12px;border-radius:50%;background:var(--sage);box-shadow:8px 0 0 var(--gold),16px 0 0 var(--rose);margin-left:18px}
+  nav ul{list-style:none;display:flex;gap:6px}
+  nav ul a{text-decoration:none;color:var(--muted);font-size:.95rem;padding:6px 14px;border-radius:30px;transition:.2s}
+  nav ul a:hover{background:var(--sage-light);color:var(--sage-deep)}
+
+  /* blobs */
+  .blob{position:absolute;border-radius:42% 58% 63% 37% / 41% 44% 56% 59%;filter:blur(2px);z-index:-1;animation:morph 14s ease-in-out infinite}
+  @keyframes morph{
+    0%,100%{border-radius:42% 58% 63% 37% / 41% 44% 56% 59%;transform:translate(0,0) rotate(0)}
+    50%{border-radius:63% 37% 38% 62% / 58% 63% 37% 42%;transform:translate(14px,-18px) rotate(12deg)}
+  }
+
+  /* hero */
+  .hero{min-height:100vh;display:flex;align-items:center;padding:120px 0 140px;position:relative}
+  .hero .wrap{width:100%}
+  .hero-text{max-width:600px;margin-right:0;margin-left:auto;text-align:right}
+  .hero .b1{width:380px;height:380px;background:var(--rose-light);top:12%;right:-90px;opacity:.85}
+  .hero .b2{width:220px;height:220px;background:var(--sage-light);bottom:16%;right:32%;opacity:.8;animation-delay:-5s}
+  .hero .b3{width:120px;height:120px;background:var(--gold);top:20%;right:44%;opacity:.35;animation-delay:-9s}
+  .chip{display:inline-block;background:#fff;color:var(--sage-deep);font-weight:500;padding:8px 20px;border-radius:40px;
+        box-shadow:0 4px 18px rgba(127,145,96,.18);margin-bottom:24px;font-size:1.05rem}
+  .chip::before{content:"✿ ";color:var(--rose)}
+  h1{font-family:'Frank Ruhl Libre',serif;font-weight:900;color:var(--clay);font-size:clamp(2.3rem,6vw,4rem);line-height:1.2}
+  h1 .hl{position:relative;color:var(--sage-deep);white-space:nowrap}
+  h1 .hl::after{content:"";position:absolute;right:-4px;left:-4px;bottom:.08em;height:.3em;background:var(--gold);opacity:.45;border-radius:20px;z-index:-1;
+                transform:scaleX(0);transform-origin:right;animation:underline 1s 1s ease forwards}
+  @keyframes underline{to{transform:scaleX(1)}}
+  .lead{margin-top:26px;color:var(--clay-dark);font-size:1.18rem;max-width:520px}
+  .cta-row{display:flex;gap:14px;flex-wrap:wrap;margin-top:36px}
+  .btn{display:inline-flex;align-items:center;gap:10px;padding:15px 32px;border-radius:60px;text-decoration:none;font-weight:500;transition:.25s;position:relative;overflow:hidden}
+  .btn svg{width:22px;height:22px;fill:currentColor}
+  .btn.primary{background:var(--sage);color:#fff;box-shadow:0 10px 24px rgba(127,145,96,.35)}
+  .btn.primary:hover{background:var(--sage-deep);transform:translateY(-3px) scale(1.02)}
+  .btn.ghost{background:#fff;color:var(--clay);box-shadow:0 6px 18px rgba(163,93,61,.12)}
+  .btn.ghost:hover{background:var(--rose-light);transform:translateY(-3px)}
+
+  /* wave dividers */
+  .wave{display:block;width:100%;height:90px}
+  .wave.top{margin-bottom:-2px}
+  .wave.bottom{margin-top:-2px}
+
+  section{position:relative}
+  h2{font-family:'Frank Ruhl Libre',serif;color:var(--clay);font-size:clamp(1.9rem,4vw,2.6rem);text-align:center;line-height:1.3}
+  .script{font-family:'Varela Round',sans-serif;font-weight:400;color:var(--sage);font-size:1.15rem;display:block;text-align:center;letter-spacing:.5px;margin-bottom:4px}
+  .sub{text-align:center;color:var(--muted);margin:10px auto 50px;max-width:520px}
+
+  /* benefits */
+  .benefits{padding:70px 0 90px}
+  .cards{display:grid;grid-template-columns:repeat(4,1fr);gap:22px}
+  .card{background:#fff;padding:38px 22px 30px;text-align:center;transition:.35s;position:relative;
+        border-radius:60px 20px 60px 20px;box-shadow:0 12px 30px rgba(74,64,56,.06)}
+  .card:nth-child(even){border-radius:20px 60px 20px 60px;margin-top:36px}
+  .card:hover{transform:translateY(-8px) rotate(-1deg);box-shadow:0 18px 40px rgba(74,64,56,.12)}
+  .card .ic{width:74px;height:74px;margin:0 auto 18px;display:grid;place-items:center;font-size:1.9rem;
+            border-radius:46% 54% 60% 40% / 45% 40% 60% 55%;transition:.4s}
+  .card:hover .ic{border-radius:60% 40% 45% 55% / 55% 60% 40% 45%;transform:scale(1.08)}
+  .c1 .ic{background:var(--sage-light)} .c2 .ic{background:var(--rose-light)}
+  .c3 .ic{background:#f6ebcf} .c4 .ic{background:var(--sky)}
+  .card .num{position:absolute;top:14px;left:22px;font-family:'Frank Ruhl Libre',serif;font-size:2.4rem;font-weight:900;opacity:.12;color:var(--clay)}
+  .tagline{display:block;width:max-content;max-width:100%;margin:64px auto 0;background:var(--clay);color:#fff;font-weight:500;font-size:1.3rem;
+           padding:14px 38px;border-radius:60px;transform:rotate(-2deg);box-shadow:0 10px 24px rgba(163,93,61,.3)}
+
+  /* how */
+  .how-bg{background:var(--sage-light)}
+  .how{padding:40px 0 60px}
+  .how .b4{width:260px;height:260px;background:#fff;opacity:.5;top:-40px;left:6%}
+  .steps{display:grid;grid-template-columns:1fr 1fr;gap:28px;margin-top:10px}
+  .step{background:var(--cream);padding:36px 34px;border-radius:36px;position:relative;overflow:hidden;transition:.3s}
+  .step:hover{transform:translateY(-5px)}
+  .step::after{content:"";position:absolute;width:140px;height:140px;border-radius:50%;left:-40px;bottom:-50px;opacity:.5}
+  .step.s1::after{background:var(--sky)}
+  .step.s2{background:var(--clay);color:#fff}
+  .step.s2::after{background:var(--gold);opacity:.35}
+  .step .badge{width:54px;height:54px;border-radius:18px;display:grid;place-items:center;font-size:1.5rem;margin-bottom:16px;background:#fff;transform:rotate(-8deg)}
+  .step h3{font-size:1.25rem;margin-bottom:8px;color:var(--clay-dark)}
+  .step.s2 h3{color:#fff}
+  .step p{position:relative;z-index:1}
+
+  /* about */
+  .about{padding:100px 0}
+  .about-grid{display:grid;grid-template-columns:1fr 340px;gap:60px;align-items:center}
+  .about h2{text-align:right}
+  .about .script{text-align:right}
+  .about p{color:var(--muted);margin-top:16px}
+  .about strong{color:var(--clay)}
+  .quote{margin-top:26px;padding:20px 26px;background:var(--rose-light);border-radius:24px 24px 24px 4px;color:var(--clay-dark);font-family:'Frank Ruhl Libre',serif;font-size:1.2rem}
+  .photo-wrap{position:relative;width:100%;aspect-ratio:4/5}
+  .photo-wrap::before{content:"";position:absolute;inset:-18px -18px 18px 18px;background:var(--gold);opacity:.35;
+                      border-radius:58% 42% 52% 48% / 46% 54% 46% 54%;animation:morph 12s ease-in-out infinite}
+  .photo{position:absolute;inset:0;overflow:hidden;background:var(--sage-light);display:grid;place-items:center;color:var(--sage-deep);
+         border-radius:48% 52% 44% 56% / 55% 45% 55% 45%;border:7px solid #fff;box-shadow:0 18px 40px rgba(74,64,56,.15)}
+  .photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+  .dots{position:absolute;bottom:-20px;right:-24px;width:90px;height:90px;
+        background-image:radial-gradient(var(--clay) 2px,transparent 2.5px);background-size:16px 16px;opacity:.35}
+
+  /* contact */
+  .contact-bg{background:linear-gradient(160deg,var(--sage) 0%,var(--sage-deep) 100%);color:#fff}
+  .contact{padding:40px 0 90px;text-align:center}
+  .contact h2{color:#fff}
+  .contact .script{color:var(--gold)}
+  .contact .big{font-size:1.35rem;line-height:1.7;margin-top:14px;opacity:.95}
+  .contact .phone{display:inline-block;margin:26px 0 30px;font-size:2.2rem;font-weight:700;color:#fff;text-decoration:none;direction:ltr;
+                  padding:6px 30px;border:2px dashed rgba(255,255,255,.5);border-radius:60px;transition:.25s}
+  .contact .phone:hover{background:rgba(255,255,255,.12)}
+  .btns{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+  .contact .btn.primary{background:#fff;color:var(--sage-deep)}
+  .contact .btn.primary:hover{background:var(--gold);color:var(--text)}
+  .contact .btn.ghost{background:transparent;color:#fff;border:2px solid #fff;box-shadow:none}
+  .contact .btn.ghost:hover{background:#fff;color:var(--clay)}
+  .contact .b5{width:200px;height:200px;background:#fff;opacity:.07;top:10%;right:6%}
+  .contact .b6{width:300px;height:300px;background:var(--gold);opacity:.12;bottom:-60px;left:4%;animation-delay:-6s}
+
+  footer{background:#3f362f;color:#e9e1d3;padding:30px 0;text-align:center;font-size:.92rem}
+  footer a{color:#e9e1d3;text-decoration:none;margin:0 10px}
+  footer a:hover{color:var(--gold)}
+  footer .copy{margin-top:10px;color:#a69b8c}
+
+  .wa-float{position:fixed;bottom:22px;left:22px;width:60px;height:60px;border-radius:50%;background:#25D366;display:grid;place-items:center;box-shadow:0 8px 22px rgba(0,0,0,.22);z-index:30}
+  .wa-float::before{content:"";position:absolute;inset:0;border-radius:50%;background:#25D366;animation:pulse 2.4s infinite;z-index:-1}
+  @keyframes pulse{0%{transform:scale(1);opacity:.6}100%{transform:scale(1.7);opacity:0}}
+  .wa-float svg{width:30px;height:30px;fill:#fff}
+
+
+  /* reveal on scroll */
+  .reveal{opacity:0;transform:translateY(40px);transition:opacity .9s ease,transform .9s cubic-bezier(.2,.7,.2,1)}
+  .reveal.from-right{transform:translateX(-50px)}
+  .reveal.from-left{transform:translateX(50px)}
+  .reveal.zoom{transform:scale(.85)}
+  .reveal.show{opacity:1;transform:none}
+  .card.reveal.show:nth-child(even){transform:none}
+
+  @media(max-width:860px){
+    .cards{grid-template-columns:1fr 1fr}
+    .card:nth-child(even){margin-top:0}
+    .steps{grid-template-columns:1fr}
+    .about-grid{grid-template-columns:1fr;gap:50px}
+    .about h2,.about .script{text-align:center}
+    .photo-wrap{max-width:280px;margin:0 auto}
+  }
+  @media(max-width:640px){
+    nav ul{display:none}
+    body{font-size:17px}
+    body::before{width:100vw;opacity:.3}
+    .hero-text{text-align:center;margin:0 auto}
+    .cta-row{justify-content:center}
+    .lead{margin-inline:auto}
+    .hero .b1{width:260px;height:260px}
+      .cards{grid-template-columns:1fr}
+  }
+  @media (prefers-reduced-motion:reduce){
+    *{animation:none!important;transition:none!important}
+    .reveal{opacity:1;transform:none}
+  }
+</style>
+</head>
+<body>
+<div id="progress"></div>
+
+<nav>
+  <div class="in">
+    <a class="brand" href="#"><i></i>מירב נבו · NLP</a>
+    <ul>
+      <li><a href="#benefits">מה תקבלי</a></li>
+      <li><a href="#how">איך זה עובד</a></li>
+      <li><a href="#about">קצת עליי</a></li>
+      <li><a href="#contact">צרי קשר</a></li>
+    </ul>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div>
+  <div class="wrap">
+    <div class="hero-text">
+      <span class="chip reveal">האם הגיע הזמן להקשיב לעצמך?</span>
+      <h1 class="reveal">כשהלב, הבטן והראש נפגשים –<br>שם <span class="hl">תפגשי את עצמך</span></h1>
+      <p class="lead reveal">ליווי NLP ממוקד, מבוסס דרך וניסיון חיים, מציע לך מרחב בטוח להפוך את העוצמה שבך לשינוי אמיתי בחיים.</p>
+      <div class="cta-row reveal">
+        <a class="btn primary" href="https://wa.me/972552460304" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm5.2 14.1c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .2-3.3-.7-2.8-1.1-4.5-3.9-4.7-4.1-.1-.2-1.1-1.5-1.1-2.9s.7-2.1 1-2.4c.3-.3.6-.3.8-.3h.6c.2 0 .4 0 .6.5l.9 2.1c.1.2.1.4 0 .5l-.3.5-.4.5c-.1.1-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.3 2.4 1.5.3.1.5.1.6-.1l.9-1c.2-.3.4-.2.7-.1l2 1c.3.1.5.2.5.3.1.2.1.7-.1 1.3z"/></svg>
+          לשיחה ראשונה ללא התחייבות
+        </a>
+        <a class="btn ghost" href="#benefits">גלי עוד ↓</a>
+      </div>
+    </div>
+  </div>
+</header>
+
+<section id="benefits" class="benefits">
+  <div class="wrap">
+    <span class="script reveal">הדרך שלך מתחילה כאן</span>
+    <h2 class="reveal">מה נעשה יחד?</h2>
+    <p class="sub reveal">ארבעה כיווני צמיחה, מרחב אחד בטוח ומכיל</p>
+    <div class="cards">
+      <div class="card c1 reveal"><span class="num">01</span><div class="ic">🌿</div><p>להפוך את הרגישות לכוח ולשקט פנימי</p></div>
+      <div class="card c2 reveal"><span class="num">02</span><div class="ic">💛</div><p>לתת מכל הלב – בלי לאבד את עצמך</p></div>
+      <div class="card c3 reveal"><span class="num">03</span><div class="ic">👣</div><p>לעשות את הצעד הבא בקריירה מתוך ביטחון</p></div>
+      <div class="card c4 reveal"><span class="num">04</span><div class="ic">🤍</div><p>להיפתח לזוגיות המיוחלת</p></div>
+    </div>
+    <span class="tagline reveal zoom">תני לעצמך צעד קדימה ✦</span>
+  </div>
+</section>
+
+<svg class="wave top" viewBox="0 0 1440 90" preserveAspectRatio="none" aria-hidden="true"><path fill="#e1e8d2" d="M0 60 C 240 10 480 100 720 55 S 1200 10 1440 50 V90 H0Z"/></svg>
+<div class="how-bg">
+  <section id="how" class="how">
+    <div class="blob b4"></div>
+    <div class="wrap">
+      <span class="script reveal">פשוט ונוח</span>
+      <h2 class="reveal">איך זה עובד?</h2>
+      <p class="sub reveal">בקצב שלך, מהמקום הכי נוח לך</p>
+      <div class="steps">
+        <div class="step s1 reveal from-right">
+          <div class="badge">💻</div>
+          <h3>מפגשים בזום, מהבית שלך</h3>
+          <p>המפגשים מתקיימים בזום (Zoom), בנוחות של הבית שלך ובקצב הנכון לך, עם אפשרות למפגש ראשון פרונטלי.</p>
+        </div>
+        <div class="step s2 reveal from-left">
+          <div class="badge">🎁</div>
+          <h3>הטבה לרגל פתיחת היומן</h3>
+          <p>לרגל פתיחת היומן לשנה חדשה ומבורכת – הטבה מיוחדת לצועדות את הצעד הראשון.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+<svg class="wave bottom" viewBox="0 0 1440 90" preserveAspectRatio="none" aria-hidden="true"><path fill="#e1e8d2" d="M0 0 H1440 V40 C 1200 90 960 10 720 50 S 240 90 0 30Z"/></svg>
+
+<section id="about" class="about">
+  <div class="wrap">
+    <div class="about-grid">
+      <div class="reveal from-right">
+        <span class="script">נעים להכיר</span>
+        <h2>קצת עליי</h2>
+        <p><strong>מירב נבו</strong> – מאמנת NLP מוסמכת. ליווי אישי ממוקד, שנשען על דרך וניסיון חיים, במרחב בטוח ומכיל.</p>
+        <div class="quote">"כשהלב, הבטן והראש נפגשים – שם תפגשי את עצמך."</div>
+      </div>
+      <div class="photo-wrap reveal zoom">
+        <div class="photo">
+          <!-- להוספת תמונה: שמרי קובץ בשם merav.jpg באותה תיקייה -->
+          <span>התמונה שלך כאן</span>
+          <img src="meyrav.jpg" alt="מירב נבו" onerror="this.remove()">
+        </div>
+        <div class="dots"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<svg class="wave top" viewBox="0 0 1440 90" preserveAspectRatio="none" aria-hidden="true"><path fill="#7f9160" d="M0 50 C 300 100 520 0 760 40 S 1240 90 1440 30 V90 H0Z"/></svg>
+<div class="contact-bg">
+  <section id="contact" class="contact">
+    <div class="blob b5"></div><div class="blob b6"></div>
+    <div class="wrap">
+      <span class="script reveal">הצעד הראשון</span>
+      <h2 class="reveal">בואי נדבר</h2>
+      <p class="big reveal">הצמיחה שלך ממשיכה בשיחה אחת – ללא התחייבות.<br>שלחי לי הודעה בוואטסאפ ונדבר.</p>
+      <a class="phone reveal zoom" href="https://wa.me/972552460304" target="_blank" rel="noopener">055-2460304</a>
+      <div class="btns reveal">
+        <a class="btn primary" href="https://wa.me/972552460304" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm5.2 14.1c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .2-3.3-.7-2.8-1.1-4.5-3.9-4.7-4.1-.1-.2-1.1-1.5-1.1-2.9s.7-2.1 1-2.4c.3-.3.6-.3.8-.3h.6c.2 0 .4 0 .6.5l.9 2.1c.1.2.1.4 0 .5l-.3.5-.4.5c-.1.1-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.3 2.4 1.5.3.1.5.1.6-.1l.9-1c.2-.3.4-.2.7-.1l2 1c.3.1.5.2.5.3.1.2.1.7-.1 1.3z"/></svg>
+          וואטסאפ
+        </a>
+      </div>
+    </div>
+  </section>
+</div>
+
+<footer>
+  <div class="wrap">
+    <div>
+      <a href="https://wa.me/972552460304" target="_blank" rel="noopener">וואטסאפ</a> ·
+      <a href="https://wa.me/972552460304" target="_blank" rel="noopener">055-2460304</a> ·
+      <a href="#about">אודות</a>
+    </div>
+    <p class="copy">© <span id="y"></span> מירב נבו · מאמנת NLP מוסמכת</p>
+  </div>
+</footer>
+
+<a class="wa-float" href="https://wa.me/972552460304" target="_blank" rel="noopener" aria-label="וואטסאפ">
+  <svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm5.2 14.1c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .2-3.3-.7-2.8-1.1-4.5-3.9-4.7-4.1-.1-.2-1.1-1.5-1.1-2.9s.7-2.1 1-2.4c.3-.3.6-.3.8-.3h.6c.2 0 .4 0 .6.5l.9 2.1c.1.2.1.4 0 .5l-.3.5-.4.5c-.1.1-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.3 2.4 1.5.3.1.5.1.6-.1l.9-1c.2-.3.4-.2.7-.1l2 1c.3.1.5.2.5.3.1.2.1.7-.1 1.3z"/></svg>
+</a>
+
+<script>
+  document.getElementById('y').textContent = new Date().getFullYear();
+
+  // reveal on scroll (with stagger for siblings)
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (!e.isIntersecting) return;
+      const sibs = [...e.target.parentElement.querySelectorAll(':scope > .reveal')];
+      e.target.style.transitionDelay = (Math.max(0, sibs.indexOf(e.target)) * 0.12) + 's';
+      e.target.classList.add('show');
+      io.unobserve(e.target);
+    });
+  }, { threshold: 0.15 });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+  // scroll progress bar + blob parallax
+  const bar = document.getElementById('progress');
+  const blobs = document.querySelectorAll('.hero .blob');
+  addEventListener('scroll', () => {
+    const h = document.documentElement;
+    bar.style.width = (h.scrollTop / (h.scrollHeight - h.clientHeight) * 100) + '%';
+    blobs.forEach((b, i) => b.style.translate = `0 ${h.scrollTop * (0.15 + i * 0.1)}px`);
+  }, { passive: true });
+
+</script>
+</body>
+</html>
